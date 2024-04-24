@@ -157,9 +157,9 @@ def quote_to_html_node(block):
     return ParentNode("blockquote", children)
 
 def extract_title(markdown):
-    leading_block = markdown.split("\n\n")
-    first_line = leading_block.split("\n")
-    if not first_line.startswith("#"):
-        raise Exception(" All pages need a single h1 header.")
+    lines = markdown.split("\n")  # Split the markdown into lines
+    if not lines[0].startswith("#"):
+        raise Exception("All pages need a single h1 header.")
     else:
-        return first_line
+        title = lines[0].lstrip("#").strip()  # Remove the leading '#' and any extra leading or trailing spaces
+        return title
