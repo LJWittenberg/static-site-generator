@@ -21,7 +21,7 @@ def generate_page(from_path, template_path, dest_path, basepath="/"):
     page_title = extract_title(from_content)
     final_content = template_content.replace("{{ Title }}", page_title).replace("{{ Content }}", Head_node.to_html())
 
-    # Replace `href` and `src` with the basepath
+    # Replace all href/src with basepath prepended correctly
     final_content = final_content.replace('href="/', f'href="{basepath}')
     final_content = final_content.replace('src="/', f'src="{basepath}')
 
